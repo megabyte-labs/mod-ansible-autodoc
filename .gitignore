@@ -1,0 +1,7 @@
+venv/
+
+.vscode/
+
+test-install.sh
+
+exREADME.md
