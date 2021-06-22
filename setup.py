@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 NAME = "mod-ansible-autodoc"
 REPO = "mod-ansible-autodoc"
 
-VERSION = "0.4"
+VERSION = "0.5"
 ARCHIVE = f"v_{'_'.join(VERSION.split('.'))}.tar.gz"
 
 setup(

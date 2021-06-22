@@ -1,3 +1,0 @@
-[console_scripts]
-mod-ansible-autodoc = mod_ansible_autodoc.commands:run
-

@@ -1,13 +1,26 @@
 import argparse
 from typing import Dict
 
-ARG_NAMES = ["todo-title", "actions-title", "tags-title", "variables-title"]
+ARG_NAMES = [
+    "todo-title",
+    "actions-title",
+    "tags-title",
+    "variables-title",
+    "todo-description",
+    "actions-description",
+    "tags-description",
+    "variables-description"
+]
 
 ARGS = [
     {"arg_name": ARG_NAMES[0], "arg_help": "todo markdown file title"},
     {"arg_name": ARG_NAMES[1], "arg_help": "actions markdown file title"},
     {"arg_name": ARG_NAMES[2], "arg_help": "tags markdown file title"},
     {"arg_name": ARG_NAMES[3], "arg_help": "variables md file title"},
+    {"arg_name": ARG_NAMES[4], "arg_help": "todo markdown file description"},
+    {"arg_name": ARG_NAMES[5], "arg_help": "actions markdown file description"},
+    {"arg_name": ARG_NAMES[6], "arg_help": "tags markdown file description"},
+    {"arg_name": ARG_NAMES[7], "arg_help": "variables md file description"},
 ]
 
 
