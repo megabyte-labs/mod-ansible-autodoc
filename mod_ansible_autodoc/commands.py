@@ -1,6 +1,5 @@
-import sys
 import subprocess
-from typing import List, Optional
+from typing import Optional
 from mod_ansible_autodoc.args.args import ARG_NAMES, get_user_arguments
 from mod_ansible_autodoc.files.common import (
     check_file_exists,
@@ -14,7 +13,9 @@ from mod_ansible_autodoc.markdown.format import (
     format_actions,
     format_tags,
     format_variables,
-    add_title
+    add_title,
+    add_description,
+    reformat_subheaders
 )
 
 
@@ -52,11 +53,23 @@ def mod_ansible_doc() -> None:
         tags = format_tags(tags)
         variables, examples = format_variables(variables)
 
+        # Add descriptions
+        todo = add_description(todo, user_args, ARG_NAMES[4])
+        actions = add_description(actions, user_args, ARG_NAMES[5])
+        tags = add_description(tags, user_args, ARG_NAMES[6])
+        examples = add_description(examples, user_args, ARG_NAMES[7])
+
         # Add titles (if applies)...
         todo = add_title(todo, user_args, ARG_NAMES[0], "## TODO")
         actions = add_title(actions, user_args, ARG_NAMES[1], "## ACTIONS")
         tags = add_title(tags, user_args, ARG_NAMES[2], "## TAGS")
         examples = add_title(examples, user_args, ARG_NAMES[3], "## VARIABLES")
+
+        # Reformat subheaders
+        todo = reformat_subheaders(todo)
+        actions = reformat_subheaders(actions)
+        tags = reformat_subheaders(tags)
+        examples = reformat_subheaders(examples)
 
         # Save new docs
         save_file("ansible_todo.md", todo)

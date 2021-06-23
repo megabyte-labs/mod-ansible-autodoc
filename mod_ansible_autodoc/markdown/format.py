@@ -1,3 +1,4 @@
+import re
 from typing import Dict, List, Tuple
 from mod_ansible_autodoc.markdown.parse import (
     get_all_headings,
@@ -178,16 +179,76 @@ def format_variable_examples(variables: str) -> str:
     return "\n\n".join(formatted_examples)
 
 
+def reformat_subheaders(content: str) -> str:
+    """
+    Reformats subheaders' #s so they all are one header level below the
+    preceding header or subheader.
+
+    Args:
+        content (str): text to reformat
+
+    Returns:
+        str: reformatted text
+    """
+    text = content[:]
+    
+    # Find all matches
+    matches = re.finditer(r"#+(?=[\s])", text)
+
+    current_level = None
+    delta = 0
+
+    # Check all sections' header levels
+    for match in matches:
+        match_header_level = len(match.group())
+
+        # Current level is equal to the number of #s in the topmost header
+        if current_level is None or match_header_level <= current_level:
+            current_level = match_header_level
+        elif match_header_level == current_level + 1:
+            current_level = match_header_level
+
+        # Calculate the number of #s that the header being checked should have
+        should_change_to = None
+        if match_header_level > current_level:
+            should_change_to = (current_level + 1) * "#"
+
+        # Modify if necessary
+        if should_change_to:
+            text = text[:match.start() + delta] + \
+                should_change_to + text[match.end() + delta:]
+            # the length of the "text" will change, so keep track of the delta
+            delta -= match_header_level - len(should_change_to)
+
+    return text
+
+
 def add_title(
     text: str, args: Dict[str, str], arg_name: str, default_title: str
+) -> str:
+    return add_subsection(text, args, arg_name, default_title)
+
+
+def add_description(
+    text: str, args: Dict[str, str], arg_name: str
+) -> str:
+    # Default description is just an empty string
+    return add_subsection(text, args, arg_name, "") 
+
+
+def add_subsection(
+    text: str, args: Dict[str, str], arg_name: str, default: str
 ) -> str:
     # If empty, dont add anything
     if not text:
         return text
 
-    title = args.get(arg_name, default_title)
+    element_to_add = args.get(arg_name, default)
 
-    if title.strip():
-        return f"{title}\n{text}"
+    if element_to_add.strip():
+        return f"{element_to_add}\n{text}"
 
-    return f"{default_title}\n{text}"
+    if default:
+        return f"{default}\n{text}"
+
+    return text

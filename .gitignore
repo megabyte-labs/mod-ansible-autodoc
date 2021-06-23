@@ -2,6 +2,8 @@ venv/
 
 .vscode/
 
+dist/
+mod_ansible_autodoc.egg-info/
 test-install.sh
 
 exREADME.md
