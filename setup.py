@@ -1,9 +1,10 @@
 from setuptools import setup, find_packages
+from mod_ansible_autodoc import __version__
 
 NAME = "mod-ansible-autodoc"
 REPO = "mod-ansible-autodoc"
 
-VERSION = "0.5"
+VERSION = __version__
 ARCHIVE = f"v_{'_'.join(VERSION.split('.'))}.tar.gz"
 
 setup(

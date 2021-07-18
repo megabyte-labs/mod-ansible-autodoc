@@ -1,3 +1,4 @@
+import sys
 import subprocess
 from typing import Optional
 from mod_ansible_autodoc.args.args import ARG_NAMES, get_user_arguments
@@ -17,6 +18,7 @@ from mod_ansible_autodoc.markdown.format import (
     add_description,
     reformat_subheaders
 )
+from mod_ansible_autodoc import name, __version__
 
 
 def run() -> None:
