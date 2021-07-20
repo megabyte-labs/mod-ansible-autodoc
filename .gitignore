@@ -7,3 +7,5 @@ mod_ansible_autodoc.egg-info/
 test-install.sh
 
 exREADME.md
+
+*/__pycache__/

@@ -100,7 +100,7 @@ def format_variables(variables: str) -> Tuple[Dict[str, List[List[str]]], str]:
         (Tuple[Dict[str, List[List[str]]], str]) -> variables json, example str
     """
     if not variables:
-        return "", ""
+        return {"role_variables": []}, ""
 
     # Get variable items
     var_items = get_list_items(variables)

@@ -1,5 +1,6 @@
 import argparse
 from typing import Dict
+from mod_ansible_autodoc import name, __version__
 
 ARG_NAMES = [
     "todo-title",
@@ -9,7 +10,8 @@ ARG_NAMES = [
     "todo-description",
     "actions-description",
     "tags-description",
-    "variables-description"
+    "variables-description",
+    "version"
 ]
 
 ARGS = [
@@ -21,6 +23,7 @@ ARGS = [
     {"arg_name": ARG_NAMES[5], "arg_help": "actions markdown file description"},
     {"arg_name": ARG_NAMES[6], "arg_help": "tags markdown file description"},
     {"arg_name": ARG_NAMES[7], "arg_help": "variables md file description"},
+    {"arg_name": ARG_NAMES[8], "arg_help": "version of the package"},
 ]
 
 
@@ -45,6 +48,16 @@ def configure_parser() -> argparse.ArgumentParser:
     """
     parser = argparse.ArgumentParser()
     for arg in ARGS:
+        if arg.get("arg_name", None) == "version":
+            parser.add_argument(
+                "-v",
+                f"--{arg.get('arg_name')}",
+                action="version",
+                version=f"{name} {__version__}",
+                help=arg.get('arg_help')
+            )
+            continue
+
         parser.add_argument(
             f"--{arg.get('arg_name')}",
             help=arg.get('arg_help')
@@ -74,5 +87,9 @@ def read_parser_args(parser) -> Dict[str, str]:
         parsed_arg_val = getattr(args, formatted_arg_name, None)
         if parsed_arg_val:
             user_args[arg_name] = parsed_arg_val
+
+    # If --version is in arguments, make sure it's the only one
+    if "version" in user_args.keys() and len(user_args) > 1:
+        raise argparse.ArgumentError("Invalid option: \"version\"")
 
     return user_args
