@@ -169,12 +169,16 @@ def format_variable_examples(variables: str) -> str:
         name = example_data[0]
 
         # Extract items
-        items = example_data[1].replace('"', "`")
+        items = example_data[1].replace('"', "`").strip("`")
+
+        # Define which whitespace to use before {items}
 
         # Build heading
-        head = f"#### {name}\n\n"
+        head = f"#### `{name}`\n\n"
+        comment = f"# Example implementation of the {name} variable"
 
-        formatted_examples.append(head + "```\n" + f"{name}:{items}" + "\n```")
+        formatted_examples.append(
+            f"{head}```yaml\n{comment}\n{name}:{items}\n```")
 
     return "\n\n".join(formatted_examples)
 
