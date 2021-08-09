@@ -119,11 +119,12 @@ def format_variables(variables: str) -> Tuple[Dict[str, List[List[str]]], str]:
         # ... if it does, add hyperlink
         for example in examples:
             if name in example:
-                name = f"[{name}](#{name})"
+                name = f"[`{name}`](#{name})"
 
         # Get value
-        var_item_data = var_item_data[1].split("-")
-        default_value = var_item_data[0].strip().strip("`")
+        var_item_data = var_item_data[1].split("-", 1)
+
+        default_value = var_item_data[0].strip()
 
         # Get description
         description = var_item_data[1].strip()
@@ -177,8 +178,10 @@ def format_variable_examples(variables: str) -> str:
         head = f"#### `{name}`\n\n"
         comment = f"# Example implementation of the {name} variable"
 
+        whitespace = "" if items.endswith("\n") else "\n"
+
         formatted_examples.append(
-            f"{head}```yaml\n{comment}\n{name}:{items}\n```")
+            f"{head}```yaml\n{comment}\n{name}:{items}{whitespace}```")
 
     return "\n\n".join(formatted_examples)
 
