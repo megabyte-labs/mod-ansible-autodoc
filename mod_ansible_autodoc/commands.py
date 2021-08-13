@@ -71,7 +71,7 @@ def mod_ansible_doc() -> None:
         todo = reformat_subheaders(todo)
         actions = reformat_subheaders(actions)
         tags = reformat_subheaders(tags)
-        examples = reformat_subheaders(examples)
+        examples = examples
 
         # Save new docs
         save_file("ansible_todo.md", todo)
@@ -110,7 +110,7 @@ def run_ansible_autodoc(verbose: Optional[bool] = True) -> None:
         verbose (bool, optional) = indicates if cmd output should be printed out
     """
     # Build bash command
-    bash_command = ["ansible-autodoc", "-y"]
+    bash_command = ["ansible-autodoc-fork", "-y"]
     bash_command = " ".join(bash_command)
 
     # Open subprocess and run
