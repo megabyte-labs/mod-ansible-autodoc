@@ -1,5 +1,6 @@
 import re
 from typing import Dict, List, Tuple
+from mod_ansible_autodoc.markdown.todo import get_todo_source_code_link
 from mod_ansible_autodoc.markdown.parse import (
     get_all_headings,
     parse_section,
@@ -34,8 +35,10 @@ def format_todo(todo: str) -> str:
 
         for todo_item in todo_items:
             # Format current item
+            todo_name = heading.replace(':', '')
+            todo_link = get_todo_source_code_link(todo_name)
             formatted_item = (
-                f"* **{heading.replace(':', '')}:** "
+                f"* **{todo_link}:** "
                 f"{todo_item.lstrip('*').strip('-').strip()}"
             )
             formatted_todo_content.append(formatted_item)
