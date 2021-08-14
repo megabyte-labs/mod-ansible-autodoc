@@ -1,7 +1,7 @@
 import os
 import json
 from pathlib import Path
-from typing import Dict, Optional, Union
+from typing import Dict, List, Optional, Union
 
 
 def read_file(file: str) -> str:
@@ -17,6 +17,22 @@ def read_file(file: str) -> str:
     content = ""
     with open(file) as fp:
         content = fp.read()
+    return content
+
+
+def read_lines(file: str) -> List[str]:
+    """
+    Reads lines from a file.
+
+    Args:
+        file (str): file to read
+
+    Returns:
+        (List[str]): lines of content
+    """
+    content = []
+    with open(file) as fp:
+        content = fp.readlines()
     return content
 
 
