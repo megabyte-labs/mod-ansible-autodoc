@@ -1,5 +1,5 @@
 import re
-from typing import Dict, List, Tuple
+from typing import Dict, List, Optional, Tuple
 from mod_ansible_autodoc.markdown.todo import get_todo_source_code_link
 from mod_ansible_autodoc.markdown.parse import (
     get_all_headings,
@@ -92,12 +92,18 @@ def format_tags(tags: str) -> str:
     return format_actions(tags)
 
 
-def format_variables(variables: str) -> Tuple[Dict[str, List[List[str]]], str]:
+def format_variables(
+    variables: str,
+    title_prefix: Optional[str] = "#### ",
+    title_postfix: Optional[str] = ""
+) -> Tuple[Dict[str, List[List[str]]], str]:
     """
     Format variables.
 
     Args:
         variables (str): variables section str
+        title_prefix (str, optional): variable title prefix. Defaults to '#### '
+        title_postfix (str, optional): variable title postfix. Defaults to ''
 
     Return:
         (Tuple[Dict[str, List[List[str]]], str]) -> variables json, example str
@@ -137,21 +143,36 @@ def format_variables(variables: str) -> Tuple[Dict[str, List[List[str]]], str]:
 
     variables_json = {"role_variables": formatted_variables}
 
-    return variables_json, format_variable_examples(variables)
+    return (
+        variables_json,
+        format_variable_examples(variables, title_prefix, title_postfix)
+    )
 
 
-def format_variable_examples(variables: str) -> str:
+def format_variable_examples(
+    variables: str,
+    title_prefix: Optional[str] = "#### ",
+    title_postfix: Optional[str] = ""
+) -> str:
     """
     Format variable examples.
 
     Args:
         variables (str): variables section str
+        title_prefix (str, optional): variable title prefix. Defaults to '#### '
+        title_postfix (str, optional): variable title postfix. Defaults to ''
 
     Return:
         (str): formatted examples
     """
     if not variables:
         return ""
+
+    if title_prefix is None:
+        title_prefix = "#### "
+
+    if title_postfix is None:
+        title_postfix = ""
 
     # Get examples
     examples = get_examples(variables)
@@ -178,8 +199,8 @@ def format_variable_examples(variables: str) -> str:
         # Define which whitespace to use before {items}
 
         # Build heading
-        head = f"#### `{name}`\n\n"
-        comment = f"# Example implementation of the {name} variable"
+        head = f"{title_prefix}`{name}`{title_postfix}\n\n"
+        comment = f"### Example implementation of the {name} variable"
 
         whitespace = "" if items.endswith("\n") else "\n"
 
@@ -230,6 +251,12 @@ def reformat_subheaders(content: str) -> str:
             # the length of the "text" will change, so keep track of the delta
             delta -= match_header_level - len(should_change_to)
 
+    # Change ### subheaders for ** bold text **
+    text_lines = text.split("\n")
+    for i, line in enumerate(text_lines):
+        if line.startswith("### "):
+            text_lines[i] = "\n" + line.replace("### ", "**") + "**\n"
+    text = "\n".join(text_lines)
     return text
 
 

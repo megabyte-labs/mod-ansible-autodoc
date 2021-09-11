@@ -11,6 +11,8 @@ ARG_NAMES = [
     "actions-description",
     "tags-description",
     "variables-description",
+    "variable-title-prefix",
+    "variable-title-postfix",
     "version"
 ]
 
@@ -23,7 +25,9 @@ ARGS = [
     {"arg_name": ARG_NAMES[5], "arg_help": "actions markdown file description"},
     {"arg_name": ARG_NAMES[6], "arg_help": "tags markdown file description"},
     {"arg_name": ARG_NAMES[7], "arg_help": "variables md file description"},
-    {"arg_name": ARG_NAMES[8], "arg_help": "version of the package"},
+    {"arg_name": ARG_NAMES[8], "arg_help": "variables section title prefix"},
+    {"arg_name": ARG_NAMES[9], "arg_help": "variables secion title postfix"},
+    {"arg_name": ARG_NAMES[10], "arg_help": "version of the package"},
 ]
 
 

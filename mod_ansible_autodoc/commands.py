@@ -1,4 +1,3 @@
-import sys
 import subprocess
 from typing import Optional
 from mod_ansible_autodoc.args.args import ARG_NAMES, get_user_arguments
@@ -18,7 +17,7 @@ from mod_ansible_autodoc.markdown.format import (
     add_description,
     reformat_subheaders
 )
-from mod_ansible_autodoc import name, __version__
+from mod_ansible_autodoc import __version__
 
 
 def run() -> None:
@@ -53,7 +52,8 @@ def mod_ansible_doc() -> None:
         todo = format_todo(todo)
         actions = format_actions(actions)
         tags = format_tags(tags)
-        variables, examples = format_variables(variables)
+        variables, examples = format_variables(
+            variables, user_args.get(ARG_NAMES[8]), user_args.get(ARG_NAMES[9]))
 
         # Add descriptions
         todo = add_description(todo, user_args, ARG_NAMES[4])
