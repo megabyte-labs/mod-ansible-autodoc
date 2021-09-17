@@ -53,7 +53,11 @@ def mod_ansible_doc() -> None:
         actions = format_actions(actions)
         tags = format_tags(tags)
         variables, examples = format_variables(
-            variables, user_args.get(ARG_NAMES[8]), user_args.get(ARG_NAMES[9]))
+            variables,
+            user_args.get(ARG_NAMES[8]),
+            user_args.get(ARG_NAMES[9]),
+            user_args.get(ARG_NAMES[10])
+        )
 
         # Add descriptions
         todo = add_description(todo, user_args, ARG_NAMES[4])
@@ -69,7 +73,7 @@ def mod_ansible_doc() -> None:
 
         # Reformat subheaders
         todo = reformat_subheaders(todo)
-        actions = reformat_subheaders(actions)
+        actions = reformat_subheaders(actions, True)
         tags = reformat_subheaders(tags)
         examples = examples
 
