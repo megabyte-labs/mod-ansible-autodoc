@@ -95,7 +95,8 @@ def format_tags(tags: str) -> str:
 def format_variables(
     variables: str,
     title_prefix: Optional[str] = "#### ",
-    title_postfix: Optional[str] = ""
+    title_postfix: Optional[str] = "",
+    example_comment_prefix: Optional[str] = "### "
 ) -> Tuple[Dict[str, List[List[str]]], str]:
     """
     Format variables.
@@ -104,6 +105,8 @@ def format_variables(
         variables (str): variables section str
         title_prefix (str, optional): variable title prefix. Defaults to '#### '
         title_postfix (str, optional): variable title postfix. Defaults to ''
+        example_comment_prefix (str, optional): variable example comment prefix.
+        Defaults to '### '.
 
     Return:
         (Tuple[Dict[str, List[List[str]]], str]) -> variables json, example str
@@ -145,14 +148,16 @@ def format_variables(
 
     return (
         variables_json,
-        format_variable_examples(variables, title_prefix, title_postfix)
+        format_variable_examples(
+            variables, title_prefix, title_postfix, example_comment_prefix)
     )
 
 
 def format_variable_examples(
     variables: str,
     title_prefix: Optional[str] = "#### ",
-    title_postfix: Optional[str] = ""
+    title_postfix: Optional[str] = "",
+    example_comment_prefix: Optional[str] = "###"
 ) -> str:
     """
     Format variable examples.
@@ -161,6 +166,8 @@ def format_variable_examples(
         variables (str): variables section str
         title_prefix (str, optional): variable title prefix. Defaults to '#### '
         title_postfix (str, optional): variable title postfix. Defaults to ''
+        example_comment_prefix (str, optional): variable example comment prefix.
+        Defaults to '### '.
 
     Return:
         (str): formatted examples
@@ -200,7 +207,8 @@ def format_variable_examples(
 
         # Build heading
         head = f"{title_prefix}`{name}`{title_postfix}\n\n"
-        comment = f"### Example implementation of the {name} variable"
+        comment = f"{example_comment_prefix} Example implementation of the " \
+                  f"{name} variable"
 
         whitespace = "" if items.endswith("\n") else "\n"
 
@@ -210,13 +218,17 @@ def format_variable_examples(
     return "\n\n".join(formatted_examples)
 
 
-def reformat_subheaders(content: str) -> str:
+def reformat_subheaders(
+    content: str,
+    change_three_hashes: Optional[bool] = False
+) -> str:
     """
     Reformats subheaders' #s so they all are one header level below the
     preceding header or subheader.
 
     Args:
         content (str): text to reformat
+        change_three_hashes (bool, optional): changes ### to ** **.
 
     Returns:
         str: reformatted text
@@ -252,11 +264,13 @@ def reformat_subheaders(content: str) -> str:
             delta -= match_header_level - len(should_change_to)
 
     # Change ### subheaders for ** bold text **
-    text_lines = text.split("\n")
-    for i, line in enumerate(text_lines):
-        if line.startswith("### "):
-            text_lines[i] = "\n" + line.replace("### ", "**") + "**\n"
-    text = "\n".join(text_lines)
+    if change_three_hashes:
+        text_lines = text.split("\n")
+        for i, line in enumerate(text_lines):
+            if line.startswith("### "):
+                text_lines[i] = "\n" + line.replace("### ", "**") + "**\n"
+        text = "\n".join(text_lines)
+
     return text
 
 
