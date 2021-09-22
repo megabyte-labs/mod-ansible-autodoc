@@ -115,7 +115,9 @@ def parse_repo_url(repo_url: str) -> str:
     repo = repo.rstrip(".git") if repo.endswith(".git") else repo
 
     if repo.startswith("http"):
-        return f"{repo}/-/blob/master/"
+        if "gitlab.com" in repo:
+            return f"{repo}/-/blob/master/"
+        return f"{repo}/blob/master/"
     else:
         repo_data = repo.split(":", 1)
         domain = repo_data[0].split("@")[-1]
