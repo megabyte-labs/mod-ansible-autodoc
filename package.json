@@ -66,6 +66,9 @@
     "binName": "mod-ansible-autodoc",
     "customPackageName": "mod-ansible-autodoc",
     "description": "Generate documentation from comments in Ansible YML files",
+    "github_id": "R_kgDOGt0jdA",
+    "gitlab_group_id": "14289563",
+    "gitlab_project_id": "25542337",
     "group": "python",
     "name": "(Mod) Ansible Autodoc",
     "overview": "[ansible-autodoc](https://github.com/AndresBott/ansible-autodoc) is a documentation tool that generates documentation from comments in Ansible source files (i.e. YML files). **mod-ansible-autodoc** is a fork of ansible-autodoc that fixes a few issues. It also changes some of the data output formats to play nice with [@appnest/readme](https://www.npmjs.com/package/@appnest/readme).",
@@ -76,10 +79,7 @@
     "slug": "mod-ansible-autodoc",
     "subgroup": "cli",
     "subheader_description": "Documentation generated from comments in Ansible YML files, tweaked for compatibility with [@appnest/readme](https://www.npmjs.com/package/@appnest/readme)",
-    "title": "(Mod) Ansible Autodoc",
-    "github_id": "R_kgDOGt0jdA",
-    "gitlab_project_id": "25542337",
-    "gitlab_group_id": "14289563"
+    "title": "(Mod) Ansible Autodoc"
   },
   "commitlint": {
     "extends": [
