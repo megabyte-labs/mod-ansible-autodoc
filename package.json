@@ -1,30 +1,25 @@
 {
+  "private": false,
+  "name": "mod-ansible-autodoc",
+  "version": "0.0.1",
+  "description": "Generate documentation from comments in Ansible YML files",
+  "license": "MIT",
   "author": "Brian Zalewski <brian@megabyte.space> (https://megabyte.space)",
-  "blueprint": {
-    "binName": "mod-ansible-autodoc",
-    "customPackageName": "mod-ansible-autodoc",
-    "description": "Generate documentation from comments in Ansible YML files",
-    "group": "python",
-    "name": "(Mod) Ansible Autodoc",
-    "overview": "[ansible-autodoc](https://github.com/AndresBott/ansible-autodoc) is a documentation tool that generates documentation from comments in Ansible source files (i.e. YML files). **mod-ansible-autodoc** is a fork of ansible-autodoc that fixes a few issues. It also changes some of the data output formats to play nice with [@appnest/readme](https://www.npmjs.com/package/@appnest/readme).",
-    "repository": {
-      "github": "https://github.com/ProfessorManhattan/mod-ansible-autodoc",
-      "gitlab": "https://gitlab.com/megabyte-labs/python/cli/mod-ansible-autodoc"
-    },
-    "slug": "mod-ansible-autodoc",
-    "subgroup": "cli",
-    "subheader_description": "Documentation generated from comments in Ansible YML files, tweaked for compatibility with [@appnest/readme](https://www.npmjs.com/package/@appnest/readme)",
-    "title": "(Mod) Ansible Autodoc"
+  "homepage": "https://megabyte.space",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ProfessorManhattan/mod-ansible-autodoc.git"
   },
   "bugs": {
     "email": "help@megabyte.space",
     "url": "https://gitlab.com/megabyte-labs/python/cli/mod-ansible-autodoc/-/issues"
   },
-  "commitlint": {
-    "extends": [
-      "@commitlint/config-conventional"
-    ],
-    "helpUrl": "https://megabyte.space/docs/contributing/commits"
+  "type": "module",
+  "scripts": {
+    "help": "task --list",
+    "prepare": "task common:husky",
+    "repair": "bash <(curl -sS https://install.doctor/repair)",
+    "start": "bash .config/start.sh"
   },
   "config": {
     "commitizen": {
@@ -32,7 +27,7 @@
     }
   },
   "dependencies": {},
-  "description": "Generate documentation from comments in Ansible YML files",
+  "optionalDependencies": {},
   "devDependencies": {
     "@washingtondc/development": "^1.0.2",
     "@washingtondc/prettier": "^1.0.0",
@@ -40,26 +35,6 @@
     "eslint-config-strict-mode": "^1.0.0",
     "sleekfast": "^0.0.1"
   },
-  "engines": {
-    "node": ">=14.18.0"
-  },
-  "eslintConfig": {
-    "extends": "eslint-config-strict-mode",
-    "ignorePatterns": [
-      "testdata/**/*"
-    ]
-  },
-  "funding": [
-    {
-      "type": "opencollective",
-      "url": "https://opencollective.com/megabytelabs"
-    },
-    {
-      "type": "patreon",
-      "url": "https://www.patreon.com/ProfessorManhattan"
-    }
-  ],
-  "homepage": "https://megabyte.space",
   "keywords": [
     "advanced",
     "automation",
@@ -81,7 +56,53 @@
     "terminal",
     "washingtondc"
   ],
-  "license": "MIT",
+  "engines": {
+    "node": ">=14.18.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "blueprint": {
+    "binName": "mod-ansible-autodoc",
+    "customPackageName": "mod-ansible-autodoc",
+    "description": "Generate documentation from comments in Ansible YML files",
+    "group": "python",
+    "name": "(Mod) Ansible Autodoc",
+    "overview": "[ansible-autodoc](https://github.com/AndresBott/ansible-autodoc) is a documentation tool that generates documentation from comments in Ansible source files (i.e. YML files). **mod-ansible-autodoc** is a fork of ansible-autodoc that fixes a few issues. It also changes some of the data output formats to play nice with [@appnest/readme](https://www.npmjs.com/package/@appnest/readme).",
+    "repository": {
+      "github": "https://github.com/ProfessorManhattan/mod-ansible-autodoc",
+      "gitlab": "https://gitlab.com/megabyte-labs/python/cli/mod-ansible-autodoc"
+    },
+    "slug": "mod-ansible-autodoc",
+    "subgroup": "cli",
+    "subheader_description": "Documentation generated from comments in Ansible YML files, tweaked for compatibility with [@appnest/readme](https://www.npmjs.com/package/@appnest/readme)",
+    "title": "(Mod) Ansible Autodoc",
+    "github_id": "R_kgDOGt0jdA",
+    "gitlab_project_id": "25542337",
+    "gitlab_group_id": "14289563"
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ],
+    "helpUrl": "https://megabyte.space/docs/contributing/commits"
+  },
+  "eslintConfig": {
+    "extends": "eslint-config-strict-mode",
+    "ignorePatterns": [
+      "testdata/**/*"
+    ]
+  },
+  "funding": [
+    {
+      "type": "opencollective",
+      "url": "https://opencollective.com/megabytelabs"
+    },
+    {
+      "type": "patreon",
+      "url": "https://www.patreon.com/ProfessorManhattan"
+    }
+  ],
   "lint-staged": {
     "**/!(logo).(jpg|png)": [
       "task image:compress --"
@@ -118,7 +139,6 @@
       "task image:compress --"
     ]
   },
-  "name": "mod-ansible-autodoc",
   "ntl": {
     "descriptions": {
       "help": "Display a list of tasks that can be run via the Taskfile.yml",
@@ -127,12 +147,7 @@
       "start": "Entrypoint for new developers that installs requirements and then runs 'task start'"
     }
   },
-  "optionalDependencies": {},
   "prettier": "@washingtondc/prettier",
-  "private": false,
-  "publishConfig": {
-    "access": "public"
-  },
   "release": {
     "branches": [
       "next",
@@ -146,17 +161,5 @@
       }
     ],
     "extends": "@washingtondc/release"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ProfessorManhattan/mod-ansible-autodoc.git"
-  },
-  "scripts": {
-    "help": "task --list",
-    "prepare": "task common:husky",
-    "repair": "bash <(curl -sS https://install.doctor/repair)",
-    "start": "bash .config/start.sh"
-  },
-  "type": "module",
-  "version": "0.0.1"
+  }
 }
