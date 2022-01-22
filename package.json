@@ -1,0 +1,162 @@
+{
+  "author": "Brian Zalewski <brian@megabyte.space> (https://megabyte.space)",
+  "blueprint": {
+    "binName": "mod-ansible-autodoc",
+    "customPackageName": "mod-ansible-autodoc",
+    "description": "Generate documentation from comments in Ansible YML files",
+    "group": "python",
+    "name": "(Mod) Ansible Autodoc",
+    "overview": "[ansible-autodoc](https://github.com/AndresBott/ansible-autodoc) is a documentation tool that generates documentation from comments in Ansible source files (i.e. YML files). **mod-ansible-autodoc** is a fork of ansible-autodoc that fixes a few issues. It also changes some of the data output formats to play nice with [@appnest/readme](https://www.npmjs.com/package/@appnest/readme).",
+    "repository": {
+      "github": "https://github.com/ProfessorManhattan/mod-ansible-autodoc",
+      "gitlab": "https://gitlab.com/megabyte-labs/python/cli/mod-ansible-autodoc"
+    },
+    "slug": "mod-ansible-autodoc",
+    "subgroup": "cli",
+    "subheader_description": "Documentation generated from comments in Ansible YML files, tweaked for compatibility with [@appnest/readme](https://www.npmjs.com/package/@appnest/readme)",
+    "title": "(Mod) Ansible Autodoc"
+  },
+  "bugs": {
+    "email": "help@megabyte.space",
+    "url": "https://gitlab.com/megabyte-labs/python/cli/mod-ansible-autodoc/-/issues"
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ],
+    "helpUrl": "https://megabyte.space/docs/contributing/commits"
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-emoji-conventional"
+    }
+  },
+  "dependencies": {},
+  "description": "Generate documentation from comments in Ansible YML files",
+  "devDependencies": {
+    "@washingtondc/development": "^1.0.2",
+    "@washingtondc/prettier": "^1.0.0",
+    "@washingtondc/release": "^0.0.2",
+    "eslint-config-strict-mode": "^1.0.0",
+    "sleekfast": "^0.0.1"
+  },
+  "engines": {
+    "node": ">=14.18.0"
+  },
+  "eslintConfig": {
+    "extends": "eslint-config-strict-mode",
+    "ignorePatterns": [
+      "testdata/**/*"
+    ]
+  },
+  "funding": [
+    {
+      "type": "opencollective",
+      "url": "https://opencollective.com/megabytelabs"
+    },
+    {
+      "type": "patreon",
+      "url": "https://www.patreon.com/ProfessorManhattan"
+    }
+  ],
+  "homepage": "https://megabyte.space",
+  "keywords": [
+    "advanced",
+    "automation",
+    "bandit",
+    "beginner",
+    "boilerplate",
+    "cli",
+    "easy",
+    "gitlab-ci",
+    "go",
+    "go-lang",
+    "golang",
+    "mblabs",
+    "megabytelabs",
+    "poetry",
+    "professormanhattan",
+    "pytest",
+    "python",
+    "terminal",
+    "washingtondc"
+  ],
+  "license": "MIT",
+  "lint-staged": {
+    "**/!(logo).(jpg|png)": [
+      "task image:compress --"
+    ],
+    "**/*": [
+      "task lint:any --"
+    ],
+    "**/*.(css|html|less|md|mjml|php|scss|sh|xml)": [
+      "task fix:prettier --"
+    ],
+    "**/*.(js|jsx|ts|tsx)": [
+      "task fix:js --",
+      "task lint:js --"
+    ],
+    "**/*.json": [
+      "task fix:json --"
+    ],
+    "**/*.sh": [
+      "task lint:shell --"
+    ],
+    "**/*.toml": [
+      "task lint:toml --"
+    ],
+    "**/*.xml": [
+      "task fix:xml --",
+      "task lint:xml --"
+    ],
+    "**/*.yml": [
+      "task fix:yaml --",
+      "task lint:yaml --"
+    ],
+    "logo.png": [
+      "task image:resize -- 200 200",
+      "task image:compress --"
+    ]
+  },
+  "name": "mod-ansible-autodoc",
+  "ntl": {
+    "descriptions": {
+      "help": "Display a list of tasks that can be run via the Taskfile.yml",
+      "prepare": "Hook, triggered by running npm install, that runs logic such as installing pre-commit hooks",
+      "repair": "Fixes basic issues in projects that are having trouble running basic commands like 'task start'",
+      "start": "Entrypoint for new developers that installs requirements and then runs 'task start'"
+    }
+  },
+  "optionalDependencies": {},
+  "prettier": "@washingtondc/prettier",
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "release": {
+    "branches": [
+      "next",
+      {
+        "name": "beta",
+        "prerelease": true
+      },
+      {
+        "name": "alpha",
+        "prerelease": true
+      }
+    ],
+    "extends": "@washingtondc/release"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ProfessorManhattan/mod-ansible-autodoc.git"
+  },
+  "scripts": {
+    "help": "task --list",
+    "prepare": "task common:husky",
+    "repair": "bash <(curl -sS https://install.doctor/repair)",
+    "start": "bash .config/start.sh"
+  },
+  "type": "module",
+  "version": "0.0.1"
+}
