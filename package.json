@@ -82,6 +82,16 @@
     "subheader_description": "Documentation generated from comments in Ansible YML files, tweaked for compatibility with [@appnest/readme](https://www.npmjs.com/package/@appnest/readme)",
     "title": "(Mod) Ansible Autodoc"
   },
+  "changelog": {
+    "displayTypes": [
+      "feat",
+      "fix",
+      "perf",
+      "refactor",
+      "revert"
+    ],
+    "showAuthor": true
+  },
   "commitlint": {
     "extends": [
       "@commitlint/config-conventional"
