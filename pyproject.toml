@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "mod-ansible-autodoc"
+name = "python-mod-ansible-autodoc"
 version = "0.5.7"
 description = "Generate documentation from comments in Ansible YML files"
 authors = ["Brian Zalewski <brian@megabyte.space>"]
