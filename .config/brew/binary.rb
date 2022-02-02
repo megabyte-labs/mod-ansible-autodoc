@@ -1,8 +1,8 @@
 class ModAnsibleAutodoc < Formula
   desc "Generate documentation from comments in Ansible YML files"
   homepage "https://megabyte.space"
-  url "https://github.com/ProfessorManhattan/mod-ansible-autodoc/releases/download/v0.5.7/mod-ansible-autodoc.tar.gz"
-  version "0.5.7"
+  url "https://github.com/ProfessorManhattan/mod-ansible-autodoc/releases/download/v1.0.0/mod-ansible-autodoc.tar.gz"
+  version "1.0.0"
   license "MIT"
 
   

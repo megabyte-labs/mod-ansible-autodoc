@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "python-mod-ansible-autodoc"
-version = "0.5.7"
+version = "1.0.0"
 description = "Generate documentation from comments in Ansible YML files"
 authors = ["Brian Zalewski <brian@megabyte.space>"]
 license = "MIT"
@@ -38,6 +38,9 @@ classifiers = [
   "Programming Language :: Python :: 3 :: Only",
   "Programming Language :: Python :: 3.10",
   "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.7",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
   "Programming Language :: Python",
   "Programming Language :: Unix Shell",
   "Topic :: Desktop Environment",
