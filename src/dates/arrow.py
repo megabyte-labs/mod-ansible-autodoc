@@ -13,7 +13,7 @@ created_from_timestamp = arrow.get("2021-09-19", "YYYY-MM-DD")
 pacific = utc_now.to("US/Pacific")
 
 # Format time
-formatted_pacific = pacific.format('YYYY-MM-DD HH:mm:ss')
+formatted_pacific = pacific.format("YYYY-MM-DD HH:mm:ss")
 
 # Shift time
 thirty_minutes_from_now = pacific.shift(minutes=30)

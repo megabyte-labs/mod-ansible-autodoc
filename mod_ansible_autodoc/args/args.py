@@ -14,7 +14,7 @@ ARG_NAMES = [
     "variable-title-prefix",
     "variable-title-postfix",
     "variable-example-comment-prefix",
-    "version"
+    "version",
 ]
 
 ARGS = [
@@ -60,14 +60,11 @@ def configure_parser() -> argparse.ArgumentParser:
                 f"--{arg.get('arg_name')}",
                 action="version",
                 version=f"{name} {__version__}",
-                help=arg.get('arg_help')
+                help=arg.get("arg_help"),
             )
             continue
 
-        parser.add_argument(
-            f"--{arg.get('arg_name')}",
-            help=arg.get('arg_help')
-        )
+        parser.add_argument(f"--{arg.get('arg_name')}", help=arg.get("arg_help"))
     return parser
 
 
@@ -96,6 +93,6 @@ def read_parser_args(parser) -> Dict[str, str]:
 
     # If --version is in arguments, make sure it's the only one
     if "version" in user_args.keys() and len(user_args) > 1:
-        raise argparse.ArgumentError("Invalid option: \"version\"")
+        raise argparse.ArgumentError('Invalid option: "version"')
 
     return user_args

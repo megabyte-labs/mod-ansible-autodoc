@@ -35,11 +35,10 @@ def format_todo(todo: str) -> str:
 
         for todo_item in todo_items:
             # Format current item
-            todo_name = heading.replace(':', '')
+            todo_name = heading.replace(":", "")
             todo_link = get_todo_source_code_link(todo_name)
             formatted_item = (
-                f"* **{todo_link}:** "
-                f"{todo_item.lstrip('*').strip('-').strip()}"
+                f"* **{todo_link}:** " f"{todo_item.lstrip('*').strip('-').strip()}"
             )
             formatted_todo_content.append(formatted_item)
 
@@ -96,7 +95,7 @@ def format_variables(
     variables: str,
     title_prefix: Optional[str] = "#### ",
     title_postfix: Optional[str] = "",
-    example_comment_prefix: Optional[str] = "### "
+    example_comment_prefix: Optional[str] = "### ",
 ) -> Tuple[Dict[str, List[List[str]]], str]:
     """
     Format variables.
@@ -149,7 +148,8 @@ def format_variables(
     return (
         variables_json,
         format_variable_examples(
-            variables, title_prefix, title_postfix, example_comment_prefix)
+            variables, title_prefix, title_postfix, example_comment_prefix
+        ),
     )
 
 
@@ -157,7 +157,7 @@ def format_variable_examples(
     variables: str,
     title_prefix: Optional[str] = "#### ",
     title_postfix: Optional[str] = "",
-    example_comment_prefix: Optional[str] = "###"
+    example_comment_prefix: Optional[str] = "###",
 ) -> str:
     """
     Format variable examples.
@@ -207,20 +207,22 @@ def format_variable_examples(
 
         # Build heading
         head = f"{title_prefix}`{name}`{title_postfix}\n\n"
-        comment = f"{example_comment_prefix} Example implementation of the " \
-                  f"{name} variable"
+        comment = (
+            f"{example_comment_prefix} Example implementation of the "
+            f"{name} variable"
+        )
 
         whitespace = "" if items.endswith("\n") else "\n"
 
         formatted_examples.append(
-            f"{head}```yaml\n{comment}\n{name}:{items}{whitespace}```")
+            f"{head}```yaml\n{comment}\n{name}:{items}{whitespace}```"
+        )
 
     return "\n\n".join(formatted_examples)
 
 
 def reformat_subheaders(
-    content: str,
-    change_three_hashes: Optional[bool] = False
+    content: str, change_three_hashes: Optional[bool] = False
 ) -> str:
     """
     Reformats subheaders' #s so they all are one header level below the
@@ -234,7 +236,7 @@ def reformat_subheaders(
         str: reformatted text
     """
     text = content[:]
-    
+
     # Find all matches
     matches = re.finditer(r"#+(?=[\s])", text)
 
@@ -258,8 +260,11 @@ def reformat_subheaders(
 
         # Modify if necessary
         if should_change_to:
-            text = text[:match.start() + delta] + \
-                should_change_to + text[match.end() + delta:]
+            text = (
+                text[: match.start() + delta]
+                + should_change_to
+                + text[match.end() + delta :]
+            )
             # the length of the "text" will change, so keep track of the delta
             delta -= match_header_level - len(should_change_to)
 
@@ -280,16 +285,12 @@ def add_title(
     return add_subsection(text, args, arg_name, default_title)
 
 
-def add_description(
-    text: str, args: Dict[str, str], arg_name: str
-) -> str:
+def add_description(text: str, args: Dict[str, str], arg_name: str) -> str:
     # Default description is just an empty string
-    return add_subsection(text, args, arg_name, "") 
+    return add_subsection(text, args, arg_name, "")
 
 
-def add_subsection(
-    text: str, args: Dict[str, str], arg_name: str, default: str
-) -> str:
+def add_subsection(text: str, args: Dict[str, str], arg_name: str, default: str) -> str:
     # If empty, dont add anything
     if not text:
         return text

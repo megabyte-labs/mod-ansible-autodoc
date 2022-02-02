@@ -33,7 +33,7 @@ def parse_section(
     hashes_end = by * by_num_end + " "
 
     section_end_match = re.search(
-        r"(?<!{0}){1}".format(by, hashes_end), sub_txt[len(section_start):]
+        r"(?<!{0}){1}".format(by, hashes_end), sub_txt[len(section_start) :]
     )
     if section_end_match:
         section_end_index = section_end_match.span()[0]

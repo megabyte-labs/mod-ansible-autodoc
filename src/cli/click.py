@@ -3,10 +3,7 @@ import click
 
 @click.command()
 @click.option(
-    "--example",
-    prompt='Example function',
-    help="Example function",
-    type=click.STRING
+    "--example", prompt="Example function", help="Example function", type=click.STRING
 )
 def boilerplate(example: click.STRING) -> None:
     """
@@ -20,7 +17,7 @@ def boilerplate(example: click.STRING) -> None:
 
 @click.group()
 def boilerplate_group():
-    """ This is a group of commands that allows for script nesting. """
+    """This is a group of commands that allows for script nesting."""
     pass
 
 
@@ -36,6 +33,3 @@ def stop():
 
 boilerplate_group.add_command(start)
 boilerplate_group.add_command(stop)
-
-
-

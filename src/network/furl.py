@@ -7,7 +7,7 @@ from furl import furl
 f = furl("https://github.com/")
 
 # Append path
-f /= 'search'
+f /= "search"
 
 # Add URL params
 f.add({"q": "python", "type": "code"})

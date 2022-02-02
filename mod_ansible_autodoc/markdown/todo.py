@@ -1,13 +1,12 @@
 import re
 import json
 import subprocess
-from mod_ansible_autodoc.files.common import (
-    read_file, check_file_exists, read_lines
+from mod_ansible_autodoc.files.common import read_file, check_file_exists, read_lines
+
+
+GIT_REPO_PATTERN = (
+    r"((git|ssh|http(s)?)|(git@[\w\.]+))(:(\/\/)?)" r"([\w\.@\:/\-~]+)(\.git)(\/)?"
 )
-
-
-GIT_REPO_PATTERN = r"((git|ssh|http(s)?)|(git@[\w\.]+))(:(\/\/)?)" \
-                   r"([\w\.@\:/\-~]+)(\.git)(\/)?"
 
 
 def get_todo_source_code_link(todo_name: str) -> str:

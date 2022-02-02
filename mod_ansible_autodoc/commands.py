@@ -15,7 +15,7 @@ from mod_ansible_autodoc.markdown.format import (
     format_variables,
     add_title,
     add_description,
-    reformat_subheaders
+    reformat_subheaders,
 )
 from mod_ansible_autodoc import __version__
 
@@ -56,7 +56,7 @@ def mod_ansible_doc() -> None:
             variables,
             user_args.get(ARG_NAMES[8]),
             user_args.get(ARG_NAMES[9]),
-            user_args.get(ARG_NAMES[10])
+            user_args.get(ARG_NAMES[10]),
         )
 
         # Add descriptions
