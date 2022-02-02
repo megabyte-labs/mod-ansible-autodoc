@@ -8,9 +8,9 @@ VERSION = __version__
 ARCHIVE = f"v_{'_'.join(VERSION.split('.'))}.tar.gz"
 
 setup(
-    name=NAME,
+    name="mod-ansible-autodoc",
     packages=find_packages(),
-    version=VERSION,
+    version="0.5.7",
     license="MIT",
     description="A wrapper for ansible-autodoc with formatted documentation",
     author="Renny Montero",
