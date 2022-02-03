@@ -20,7 +20,9 @@ setup(
         "ansible-autodoc-fork",
     ],
     include_package_data=True,
-    entry_points={"console_scripts": [f"mod-ansible-autodoc = mod_ansible_autodoc.commands:run"]},
+    entry_points={
+        "console_scripts": [f"mod-ansible-autodoc = mod_ansible_autodoc.commands:run"]
+    },
     classifiers=[
         "Development Status :: 4 - Beta",
         "Intended Audience :: Developers",
