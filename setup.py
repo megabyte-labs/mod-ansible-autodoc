@@ -1,7 +1,6 @@
 from setuptools import setup, find_packages
 from mod_ansible_autodoc import __version__
 
-NAME = "mod-ansible-autodoc"
 REPO = "mod-ansible-autodoc"
 
 VERSION = __version__
@@ -21,7 +20,7 @@ setup(
         "ansible-autodoc-fork",
     ],
     include_package_data=True,
-    entry_points={"console_scripts": [f"{NAME} = mod_ansible_autodoc.commands:run"]},
+    entry_points={"console_scripts": [f"mod-ansible-autodoc = mod_ansible_autodoc.commands:run"]},
     classifiers=[
         "Development Status :: 4 - Beta",
         "Intended Audience :: Developers",
