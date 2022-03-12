@@ -53,30 +53,12 @@ description = "Generate documentation from comments in Ansible YML files"
 documentation = "https://megabyte.space/docs/python/library"
 homepage = "https://megabyte.space"
 include = ["CHANGELOG.md", "LICENSE"]
-keywords = [
-  "advanced",
-  "automation",
-  "bandit",
-  "beginner",
-  "boilerplate",
-  "cli",
-  "easy",
-  "gitlab-ci",
-  "go",
-  "go-lang",
-  "golang",
-  "mblabs",
-  "megabytelabs",
-  "poetry",
-  "professormanhattan",
-  "pytest",
-  "python",
-  "terminal",
-  "washingtondc"
-]
+keywords = ["advanced", "automation", "bandit", "beginner", "boilerplate", "cli", "easy", "gitlab-ci", "go", "go-lang", "golang", "mblabs", "megabytelabs", "poetry", "professormanhattan", "pytest", "python", "terminal", "washingtondc"]
 license = "MIT"
 name = "mod-ansible-autodoc"
-packages = [{ include = "mod-ansible-autodoc" }]
+packages = [
+    { include = "mod-ansible-autodoc" }
+]
 readme = "README.md"
 version = "1.0.0"
 
@@ -134,7 +116,12 @@ recommended = [
   "sphinx",
   "sphinx-press-theme"
 ]
-semantic = ["pip", "setuptools", "twine", "wheel"]
+semantic = [
+  "pip",
+  "setuptools",
+  "twine",
+  "wheel"
+]
 
 [tool.poetry.urls]
 "Bug Tracker" = "https://gitlab.com/megabyte-labs/python/cli/mod-ansible-autodoc/-/issues"
