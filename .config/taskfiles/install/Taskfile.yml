@@ -62,6 +62,12 @@ tasks:
       - '[[ "${container:=}" == "docker" ]]'
 
   modules:local:
+    cmds:
+      - task: modules:local:init
+    status:
+      - '[ -n "$BUILD_DATE" ] && [ -f /.dockerenv ]'
+
+  modules:local:init:
     deps:
       - :install:npm:{{.NPM_PROGRAM_LOCAL}}
       - :install:software:jq
@@ -78,7 +84,6 @@ tasks:
         sh: jq -r -S '.dependencies + .devDependencies + .optionalDependencies + .peerDependencies' package.json
       PREVIOUS_DEPS: '{{.PREVIOUS_DEPS}}'
       SEMANTIC_PYTHON_POST_INSTALL: '{{if eq .SEMANTIC_RELEASE "true"}}true{{else}}false{{end}}'
-    run: once
     log:
       error: Encountered error while installing local NPM dependencies
       start: Installing local NPM dependencies
