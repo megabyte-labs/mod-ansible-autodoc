@@ -62,26 +62,27 @@ packages = [
 python = ">=3.7.2,<3.11"
 
 # Recommended packages - use these whenever possible
-aiohttp = { version = "^3.7.4", optional = true }
+aiohttp = "^3.7.4"
 arrow = { version = "^1.1.1", optional = true }
-better-exceptions = { version = "^0.3.3", optional = true }
-celery = { version = "^5.1.2", optional = true }
-click = { version = "^8.0.3", optional = true }
-fire = { version = "^0.4.0", optional = true }
+better-exceptions = "^0.3.3"
+celery = "^5.1.2"
+click = "^8.0.3"
+fire = "^0.4.0"
 furl = { version = "^2.1.2", optional = true }
-requests = { version = "^2.26.0", optional = true }
+requests = "^2.26.0"
 rich = { version = "^10.9.0", optional = true }
 schedule = { version = "^1.1.0", optional = true }
-schema = { version = "^0.7.4", optional = true }
+schema = "^0.7.4"
 sh = { version = "^1.14.2", optional = true }
 sphinx = { version = "^4.1.2", optional = true }
 sphinx-press-theme = { version = "^0.8.0", optional = true }
 
+
 # Semantic extras
-pip = { version = "^21.3.0", optional = true }
-setuptools = { version = "^58.2.0", optional = true }
-twine = { version = "^3.8.0", optional = true }
-wheel = { version = "^0.37.1", optional = true }
+pip = { version = "^21.3.0" }
+setuptools = { version = "^58.2.0" }
+twine = { version = "^3.8.0"}
+wheel = { version = "^0.37.1" }
 ansible-autodoc-fork = "^0.5.6"
 
 [tool.poetry.dev-dependencies]
@@ -125,7 +126,10 @@ semantic = [
 ]
 
 [tool.poetry.scripts]
-run = "mod_ansible_autodoc.commands:run"
+mod-ansible-autodoc = "mod_ansible_autodoc.commands:run"
+
+#[tool.poetry.entry-points."mod_ansible_autodoc.commands"]
+#mod-ansible-autodoc = "mod_ansible_autodoc.commands:run"
 
 [tool.poetry.urls]
 "Bug Tracker" = "https://gitlab.com/megabyte-labs/python/cli/mod-ansible-autodoc/-/issues"
