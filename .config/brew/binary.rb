@@ -10,7 +10,7 @@ class ModAnsibleAutodoc < Formula
   def install
     os = OS.kernel_name.downcase
     arch = Hardware::CPU.intel? ? "amd64" : Hardware::CPU.arch.to_s
-    bin.install "build/bin/mod-ansible-autodoc-#{os}_#{arch}" => "mod-ansible-autodoc"
+    bin.install "build/mod-ansible-autodoc-#{os}_#{arch}" => "mod-ansible-autodoc"
   done
 
   test do
