@@ -1,3 +1,4 @@
+# @binaryBrew [ModAnsibleAutodoc](https://github.com/megabyte-labs/mod-ansible-autodoc) - Generate documentation from comments in Ansible YML files
 class ModAnsibleAutodoc < Formula
   desc "Generate documentation from comments in Ansible YML files"
   homepage "https://megabyte.space"
