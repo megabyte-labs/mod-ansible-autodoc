@@ -65,7 +65,9 @@
 ## Table of Contents
 
 - [Overview](#overview)
-- [This Repository (Shared Common)](#this-repository-shared-common)
+- [Custom Titles](#custom-titles)
+- [Variables' Title Prefix, Postfix and Example Comment Prefix](#variables-title-prefix-postfix-and-example-comment-prefix)
+  - [`sdk_location` <!-- VARIABLE_FIX -->](#sdk_location----variable_fix---)
 - [Installation](#installation)
   - [PyPi](#pypi)
   - [Install Doctor](#install-doctor)
@@ -82,11 +84,43 @@
 
 [ansible-autodoc](https://github.com/AndresBott/ansible-autodoc) is a documentation tool that generates documentation from comments in Ansible source files (i.e. YML files). **mod-ansible-autodoc** is a fork of ansible-autodoc that fixes a few issues. It also changes some of the data output formats to play nice with [@appnest/readme](https://www.npmjs.com/package/@appnest/readme).
 
-<a href="#this-repository-shared-common" style="width:100%"><img style="width:100%" src="https://gitlab.com/megabyte-labs/assets/-/raw/master/png/aqua-divider.png" /></a>
+<a href="#custom-titles" style="width:100%"><img style="width:100%" src="https://gitlab.com/megabyte-labs/assets/-/raw/master/png/aqua-divider.png" /></a>
 
-## This Repository (Shared Common)
+## Custom Titles
 
-This repository houses files that propagate downstream to project-specific repositories.
+There are 4 optional args for this, one per markdown file:
+
+1. --todo-title
+2. --actions-title
+3. --tags-title
+4. --variables-title
+
+The value of an argument has to be wrapped around ''. Example:
+
+```sh
+mod-ansible-autodoc --todo-title '## IMPROVEMENTS FILE'
+```
+
+<a href="#variables-title-prefix-postfix-and-example-comment-prefix" style="width:100%"><img style="width:100%" src="https://gitlab.com/megabyte-labs/assets/-/raw/master/png/aqua-divider.png" /></a>
+
+## Variables' Title Prefix, Postfix and Example Comment Prefix
+
+It's possible to add a prefix and/or postfix to `ansible_variables.md`'s subheaders and a prefix to the example comment. Simply run:
+
+```sh
+mod-ansible-autodoc --variable-title-prefix '###' --variable-title-postfix ' <!-- VARIABLE_FIX -->' --variable-example-comment-prefix '##PREFIX##'
+```
+
+Then, expect something like the following:
+
+```
+### `sdk_location` <!-- VARIABLE_FIX -->
+
+yaml
+##PREFIX## Example implementation of the sdk_location variable
+sdk_location: ~/Android/Sdk
+
+```
 
 <a href="#installation" style="width:100%"><img style="width:100%" src="https://gitlab.com/megabyte-labs/assets/-/raw/master/png/aqua-divider.png" /></a>
 
