@@ -1454,9 +1454,7 @@ flake8-isort = []
 flake8-plugin-utils = []
 flake8-polyfill = []
 flake8-pytest-style = []
-flake8-quotes = [
-    {file = "flake8-quotes-3.3.1.tar.gz", hash = "sha256:633adca6fb8a08131536af0d750b44d6985b9aba46f498871e21588c3e6f525a"},
-]
+flake8-quotes = []
 flake8-rst-docstrings = []
 flake8-simplify = []
 flake8-string-format = []
